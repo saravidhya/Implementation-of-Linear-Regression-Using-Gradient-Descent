@@ -84,6 +84,7 @@ plt.plot(range(0,epochs),error)
 ## Output:
 
 5000
+
 ![image](https://github.com/user-attachments/assets/852b0f87-ee71-4d53-84dc-b3a39fec3b58)
 
 ## Result:
