@@ -1,91 +1,90 @@
-# Implementation-of-Linear-Regression-Using-Gradient-Descent
-
+# EXPERIMENT NO: 3
+## Implementation-of-Linear-Regression-Using-Gradient-Descent
+### NAME : AVINASH T
+### REG NO: 212223230026
 ## AIM:
-
 To write a program to predict the profit of a city using the linear regression model with gradient descent.
 
 ## Equipments Required:
-
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
+1. **Import Libraries**: Load necessary libraries for data handling, metrics, and visualization.
 
-1. Import the standard libraries in python required for finding Gradient Design.
-2. Read the dataset file and check any null value using .isnull() method. 
-3. Declare the default variables with respective values for linear regression.
-4. Calculate the loss using Mean Square Error.
-5. Predict the value of y.
-6. Plot the graph respect to hours and scores using .scatterplot() method for Linear Regression.
-7. Plot the graph respect to loss and iterations using .plot() method for Gradient Descent.
+2. **Load Data**: Read the dataset using `pd.read_csv()` and display basic information.
 
+3. **Initialize Parameters**: Set initial values for slope (m), intercept (c), learning rate, and epochs.
 
-## Program:
+4. **Gradient Descent**: Perform iterations to update `m` and `c` using gradient descent.
 
-```
-/*
+5. **Plot Error**: Visualize the error over iterations to monitor convergence of the model.
+## Program & Output
+```c
 Program to implement the linear regression using gradient descent.
-Developed by: Vidhiya Lakshmi S
-RegisterNumber: 212223230238 
-*/
-import pandas as pd
+Developed by: AVINASH T
+RegisterNumber: 212223230026
+
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+def multivariate_linear_regression(X1, Y, learning_rate=0.01, num_iters=1000):
+  X=np.c_[np.ones(len(X1)),X1]
+  theta=np.zeros(X.shape[1]).reshape(-1,1)
+  for _ in range(num_iters):
+        predictions=(X).dot(theta).reshape(-1,1)
+        errors=(predictions-Y).reshape(-1,1)
+        theta-=learning_rate*(1/len(X1))*X.T.dot(errors)
+ return theta
+from sklearn.preprocessing import StandardScaler
+df=pd.read_csv('/content/50_Startups.csv')
+df.info()
 ```
+![image](https://github.com/user-attachments/assets/70a22dbb-3ae2-4165-99ed-91c92d495884)
+```c
+df.head()
 ```
-df=pd.read_csv('/content/student_scores.csv')
-print(df.head())
-print(df.tail())
+![image](https://github.com/user-attachments/assets/f33aecd8-ea50-4a51-a259-b828a4d8b0b1)
+```c
+df.tail()
 ```
-
-## Output:
-
-![image](https://github.com/user-attachments/assets/132ed7d6-78fc-4ca8-9b7b-abd3a803e6c5)
-
+![image](https://github.com/user-attachments/assets/b4328aad-f3ce-4849-af79-b9b962edcc64)
+```c
+x = (df.iloc[:, :-2].values)
+y = (df.iloc[:, -1].values).reshape(-1,1)
+print(x)
 ```
-X=df.iloc[:,:-1].values
-print(X)
-Y=df.iloc[:,1].values
-print(Y)
-
+![image](https://github.com/user-attachments/assets/368bb892-ebce-419f-8014-17abbc1d7cda)
+```c
+print(y)
 ```
-
-## Output:
-![image](https://github.com/user-attachments/assets/aac7cbe8-fcca-46ff-b24c-ffa36df669f2)
-
+![image](https://github.com/user-attachments/assets/f0cf87b5-ae2a-4979-bea2-b1ac75c82190)
+```c
+scaler = StandardScaler()
+x1=x.astype(float)
+x1_scaled= scaler.fit_transform(x)
+y1_scaled = scaler.fit_transform(y)
+print(x1_scaled)
+print(y1_scaled)
 ```
-m=0
-c=0
-L=0.001
-epochs=5000
-n=float(len(X))
-error=[]
-for i in range(epochs):
-  Y_pred=m*X+c
-  D_m=(-2/n)*sum(X*(Y-Y_pred))
-  D_c=(-2/n)*sum(Y-Y_pred)
-  m=m-L*D_m
-  c=c-L*D_c
-  error.append(sum(Y-Y_pred)**2)
-print(m,c)
+![image](https://github.com/user-attachments/assets/b6692819-46fd-4dcb-985e-b19609605a12)
+
+![image](https://github.com/user-attachments/assets/ca969907-4e46-4acc-9dd7-8f098e02449e)
+```c
+theta=multivariate_linear_regression(x1_scaled,y1_scaled)
+print(theta)
 ```
-
-## Output:
-![image](https://github.com/user-attachments/assets/7d68bacd-addd-4d07-83e6-988bf5a8e040)
-
+![image](https://github.com/user-attachments/assets/0a53c54e-25c5-4a5e-98b3-7ffa2b863f79)
+```c
+new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
+new_Scaled=scaler.fit_transform(new_data)
+prediction=np.dot(np.append(1,new_Scaled),theta)
+prediction=prediction.reshape(-1,1)
+pre=scaler.inverse_transform(prediction)
+print(f"Predicted value:{pre}")
 ```
-type(error)
-print(len(error))
-plt.plot(range(0,epochs),error)
+![image](https://github.com/user-attachments/assets/eb003e10-9a64-493a-a2b6-48e24ce5955d)
 
-```
-## Output:
-
-5000
-
-![image](https://github.com/user-attachments/assets/852b0f87-ee71-4d53-84dc-b3a39fec3b58)
 
 ## Result:
 Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
