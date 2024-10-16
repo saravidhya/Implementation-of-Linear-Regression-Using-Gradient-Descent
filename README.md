@@ -1,7 +1,7 @@
 # EXPERIMENT NO: 3
 ## Implementation-of-Linear-Regression-Using-Gradient-Descent
-### NAME : AVINASH T
-### REG NO: 212223230026
+### NAME : Vidhiya Lakshmi S
+### REG NO: 212223230238
 ## AIM:
 To write a program to predict the profit of a city using the linear regression model with gradient descent.
 
@@ -22,8 +22,8 @@ To write a program to predict the profit of a city using the linear regression m
 ## Program & Output
 ```c
 Program to implement the linear regression using gradient descent.
-Developed by: AVINASH T
-RegisterNumber: 212223230026
+Developed by: Vidhiya Lakshmi S
+RegisterNumber: 212223230238
 
 import numpy as np
 import pandas as pd
